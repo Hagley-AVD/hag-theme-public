@@ -1,5 +1,5 @@
 screenshot  = screenshot.png
-name        = Tulane Theme
+name        = Hagley Theme
 description = Read the <a href="http://drupal.org/node/873778">online docs</a> or the included README.txt on how to create a theme with Zen.
 core        = 7.x
 base theme  = zen
@@ -10,7 +10,6 @@ stylesheets[all][] = system.menus.css
 ; Then we add our own stylesheets.
 stylesheets[all][] = sass-css/normalize.css
 stylesheets[all][] = sass-css/wireframes.css
-;stylesheets[all][] = sass-css/layouts/responsive-sidebars.css
 stylesheets[all][] = sass-css/responsive.css
 stylesheets[all][] = sass-css/pages.css
 stylesheets[all][] = sass-css/blocks.css
@@ -22,6 +21,8 @@ stylesheets[all][] = sass-css/forms.css
 stylesheets[all][] = sass-css/fields.css
 stylesheets[all][] = sass-css/print.css
 stylesheets[all][] = sass-css/layouts/front-layout.css
+stylesheets[all][] = sass-css/layouts/collection-landing-layout.css
+stylesheets[all][] = sass-css/stickey_footer.css
 
 stylesheets[all][] = css/tabs.css
 

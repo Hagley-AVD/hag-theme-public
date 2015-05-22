@@ -70,13 +70,16 @@
  */
 
 ?>
-<div id="page">
-  <?php print render($page['sub_header']); ?>
   <header id="header" role="banner">
   <div class="h-wrapper">
-      <?php if ($logo): ?>
+
+
+
+    <?php if ($logo): ?>
       <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" id="logo"><img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" /></a>
     <?php endif; ?>
+    
+    
     <?php if ($site_name || $site_slogan): ?>
       <hgroup id="name-and-slogan">
         <?php if ($site_name): ?>
@@ -85,12 +88,20 @@
           </h1>
         <?php endif; ?>
 
+
         <?php if ($site_slogan): ?>
           <h2 id="site-slogan"><?php print $site_slogan; ?></h2>
         <?php endif; ?>
       </hgroup>
     <?php endif; ?>
-
+    
+    
+    <?php if ($islandora_header_search): ?>
+      <div id="islandora-header-search"><?php print $islandora_header_search; ?></div>
+    <?php endif; ?>
+    
+    
+    
     <?php if ($secondary_menu): ?>
       <nav id="secondary-menu" role="navigation">
         <?php print theme('links__system_secondary_menu', array(
@@ -107,12 +118,16 @@
       </nav>
     <?php endif; ?>
 
+
+
     <?php print render($page['header']); ?>
   </div>
-
-
-
   </header>
+<div class="body-wrapper">
+
+<div id="page">
+  <?php print render($page['sub_header']); ?>
+
     <div id="navigation">
 
       <?php if ($main_menu): ?>
@@ -176,8 +191,9 @@
 
   </div><!-- /#main -->
 
+</div><!-- /#page -->
+</div>
+<div class="footer-wrapper">
   <?php print render($page['footer']); ?>
   <?php print render($page['bottom']); ?>
-</div><!-- /#page -->
-
-
+</div>

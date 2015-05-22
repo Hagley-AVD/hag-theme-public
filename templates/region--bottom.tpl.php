@@ -9,8 +9,6 @@
 ?>
 <?php if ($content): ?>
 <div id="bottom" class="bottom-wrapper">
-  <div class="bottom-place-one"></div>
-    <?php print $content; ?>
-  <div class="bottom-place-three"></div>
+  <?php print $content; ?>
 </div>
 <?php endif; ?>
