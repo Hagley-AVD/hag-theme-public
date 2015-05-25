@@ -30,17 +30,17 @@ $hover:           $gold;
 
 
 // a 'color' was set to "$fountainbleu", but is not defined"
-a {
-  color: darken($dark-blue,15%);
+//a {
+  //color: darken($dark-blue,15%);
   //display: inline-block;
-  word-wrap: break-word;
-  text-decoration:none;
-  font-family: $base-font-family;
-  &:hover{
-    @include transition(all 0.2s ease-in-out);
-    color: $active;
-  }
-}
+  //word-wrap: break-word;
+  //text-decoration:none;
+ //// font-family: $base-font-family;
+ // &:hover{
+ //   @include transition(all 0.2s ease-in-out);
+ //   color: $active;
+ // }
+//}
 
 
 h1,h2,h3,h4,h5,h6 {

@@ -141,7 +141,7 @@ function hag_theme_preprocess_page(&$variables) {
   $path_array = explode("/", $path);
   if (count($path_array) >= 2) {
     if ($path_array[0] == 'islandora' && $path_array[1] == 'search'){
-      drupal_set_title("Items");
+      drupal_set_title("Search Results");
     }
   }
 }
@@ -155,6 +155,7 @@ function hag_theme_form_islandora_solr_simple_search_form_alter(&$form, &$form_s
     '#markup' => l(t("Advanced Search"), "advanced-search", array('attributes' => array('class' => array('adv_search')))),
   );
   $form['simple']['advanced_link'] = $link;
+  $form['simple']['islandora_simple_search_query']['#attributes']['placeholder'] = t("Search Repository");
   if (theme_get_setting('hag_theme_search_text')) {
     $form['simple']['hag_theme_text_search_text'] = array(
       '#weight' => -1,
@@ -208,7 +209,10 @@ function hag_theme_preprocess_islandora_basic_collection_wrapper(&$variables) {
   if (in_array("islandora:collectionCModel", $variables['islandora_object']->{models})) {
     array_push($variables['associated_objects_array'][$key]['classes'], 'islandora-default-thumb');
     $block = module_invoke('dgi_ondemand', 'block_view', 'dgi_ondemand_latest_obj');
-    $variables['islandora_latest_objects'] = render($block['content']);
+    $data = render($block['content']);
+    if (!empty($data)) {
+      $variables['islandora_latest_objects'] = $data;
+    }
   }
 }
 

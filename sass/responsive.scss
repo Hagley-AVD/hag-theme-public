@@ -10,12 +10,21 @@
 
 @import "base";
 @import "zen";
+/**
+ * @file
+ * Positioning for a responsive layout.
+ *
+ * Define CSS classes to create a fluid grid layout with optional sidebars
+ * depending on whether blocks are placed in the left or right sidebars.
+ *
+ * This layout uses the Zen Grids plugin for Compass: http://zengrids.com
+ */
 
 // We are going to create a fluid grid with 1, 3, or 5 columns and 20px gutters
 // between columns (applied as 10px of left/right padding on each column).
 $zen-column-count:  1;
 $zen-gutter-width:  20px;
-
+$nav-height:        20px;
 // If you need IE6/7 support for box-sizing: border-box (default), see _init.scss
 //$zen-box-sizing: content-box;
 
@@ -33,7 +42,7 @@ $zen-auto-include-item-base: false;
  * For screen sizes larger than 1200px, prevent excessively long lines of text
  * by setting a max-width.
  */
-#page, 
+#page,
 .region-bottom {
   margin-left: auto;
   margin-right: auto;
@@ -58,105 +67,14 @@ $zen-auto-include-item-base: false;
   @include zen-grid-container();
 }
 
-/* Navigation bar */
-@media all and (min-width: 480px) {
-  #main {
-    /* Move all the children of #main down to make room. */
-    position: relative;
-  }
-  #navigation {
-    /* Move the navbar up inside #main's padding. */
-    width: $zen-grid-width;
-  }
-}
-
-} // End of @if $zen-reverse-all-floats == true
-
-/**
- * Use 3 grid columns for smaller screens.
- */
-@media all and (min-width: 480px) and (max-width: 959px) {
-
-  $zen-column-count: 3;
-
-  /**
-   * The layout when there is only one sidebar, the left one.
-   */
-  .region-sidebar-first {
-    /* Span 2 columns, starting in 2nd column from left. */
-    #content {
-      @include zen-grid-item(2, 2);
-    }
-
-    /* Span 1 column, starting in 1st column from left. */
-    .region-sidebar-first {
-      @include zen-grid-item(1, 1);
-    }
-  }
-
-  /**
-   * The layout when there is only one sidebar, the right one.
-   */
-  .sidebar-second {
-    /* Span 2 columns, starting in 1st column from left. */
-    #content {
-      @include zen-grid-item(2, 1);
-    }
-
-    /* Span 1 column, starting in 3rd column from left. */
-    .region-sidebar-second {
-      @include zen-grid-item(1, 3);
-    }
-  }
-
-  /**
-   * The layout when there are two sidebars.
-   */
-  .two-sidebars {
-    /* Span 2 columns, starting in 2nd column from left. */
-    #content {
-      @include zen-grid-item(2, 2);
-    }
-
-    /* Span 1 column, starting in 1st column from left. */
-    .region-sidebar-first {
-      @include zen-grid-item(1, 1);
-    }
-
-    /* Start a new row and span all 3 columns. */
-    .region-sidebar-second {
-      @include zen-grid-item(3, 1);
-      @include zen-nested-container(); // Since we're making every block in this region be a grid item.
-      @include zen-clear();
-
-      /* Apply the shared properties of grid items in a single, efficient ruleset. */
-      .block {
-        @include zen-grid-item-base();
-      }
-      /* Span 1 column, starting in the 1st column from left. */
-      .block:nth-child(3n+1) {
-        @include zen-grid-item(1, 1);
-        @include zen-clear();
-      }
-      /* Span 1 column, starting in the 2nd column from left. */
-      .block:nth-child(3n+2) {
-        @include zen-grid-item(1, 2);
-      }
-      /* Span 1 column, starting in the 3rd column from left. */
-      .block:nth-child(3n) {
-        @include zen-grid-item(1, 3);
-      }
-    }
-  }
-}
-
 /**
  * Use 5 grid columns for larger screens.
  */
 @media all and (min-width: 960px) {
 
   $zen-column-count: 5;
-
+  $zen-gutter-width:  20px;
+  $nav-height:        20px;
   /**
    * The layout when there is only one sidebar, the left one.
    */
@@ -186,7 +104,6 @@ $zen-auto-include-item-base: false;
       @include zen-grid-item(1, 5);
     }
   }
-
   /**
    * The layout when there are two sidebars.
    */
@@ -206,4 +123,6 @@ $zen-auto-include-item-base: false;
       @include zen-grid-item(1, 5);
     }
   }
+}
+
 }

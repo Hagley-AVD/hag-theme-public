@@ -10,17 +10,7 @@
 // - http://drupal.org/node/1446420
 // - http://www.adequatelygood.com/2010/3/JavaScript-Module-Pattern-In-Depth
 (function ($, Drupal, window, document, undefined) {
-
-	
-	
-	
 $(window).load(function() {
-  $("#edit-islandora-simple-search-query").val("Search Digital Library");
-
-    $("#edit-islandora-simple-search-query").focus(function() {
-      $(this).val("");
-    });
-
    function update_header_position() {
       if ($('#admin-menu').length > 0) {
         $('#header').css('margin-top', $('#admin-menu').height());
@@ -66,7 +56,7 @@ $(window).load(function() {
      fixFooter();
    });
    
-   
+   $(window).trigger('resize');
 });
 
 })(jQuery, Drupal, this, this.document);

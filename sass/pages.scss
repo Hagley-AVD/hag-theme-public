@@ -206,6 +206,17 @@ p.flex-caption {
   }
 }
 
+.islandora-basic-collection-thumb{
+  text-align: center;
+  img{
+    max-width: 10em;
+  }
+}
+
+.islandora-basic-collection-caption{
+  text-align: center;
+}
+
 .block-front-page-browse-collection table {
   table-layout: fixed;
 }
@@ -331,6 +342,43 @@ dl.solr-thumb {
   }
 }
 
+
+.footer-popular-links, #block-system-main-menu, .adv_search{
+  ul.menu{
+      width: 100%;
+      padding: 0;
+      margin: 0;
+      list-style-type: none;
+    a {
+      text-decoration: none;
+      color: white;
+      padding: 0em 0.6em;
+    }
+    a:hover{
+      background-color: transparent;
+      color: grey;
+    }
+    li {
+      display: block;
+    }
+    li:hover{
+      background-color: transparent;
+    }
+  }
+}
+
+#footer, #block-menu-menu-footer-menu{
+  a {
+    text-decoration: none;
+    color: white;
+    padding: 0em 0.6em;
+  }
+  a:hover{
+    background-color: transparent;
+    color: grey;
+  }
+}
+
 /*
  * Header
  */
@@ -372,8 +420,6 @@ div.accordion_button.previous {
 
 #name-and-slogan { /* Wrapper for website name and slogan */
   float: left;
-  margin-left: 2%;
-  margin-top: -0.2em;
   background: transparent;
 }
 
@@ -403,7 +449,10 @@ div.accordion_button.previous {
 }
 
 .region-header { /* Wrapper for any blocks placed in the header region */
-
+  margin-left: 53px;
+  margin-top: 40px;
+  position: absolute;
+  width: 400px;
 }
 
 .front{
@@ -429,7 +478,6 @@ div.accordion_button.previous {
 
 #content {
   width: 100%;
-  box-shadow: 0 0 5px 1px rgba(38, 37, 38, 0.3);
   background: #e7e7e7;
   padding: 1.5em 1em;
   margin-left: auto;
