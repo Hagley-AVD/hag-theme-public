@@ -108,7 +108,7 @@ function hag_theme_preprocess_html(&$variables){
     $background_obj = islandora_object_load($background_collection_pid);
     $members = islandora_basic_collection_get_member_objects($background_obj);
     // TODO: CHANGE THE > TO '>= 1'.
-    if ($members[0] > 300000) {
+    if ($members[0] >= 1) {
       $random = array_rand($members[1]);
       $pid = $members[1][$random]['object']['value'];
       $object = islandora_object_load($members[1][$random]['object']['value']);
