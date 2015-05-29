@@ -685,6 +685,12 @@ ul.pager li.pager-current {
   }
 }
 
+.islandora-audio-metadata, .islandora-book-metadata, .islandora-binary-object-metadata, .islandora-pdf-metadata, .islandora-basic-image-metadata, .islandora-large-image-metadata, .islandora-newspaper-metadata, .islandora-video-metadata{
+  li{
+    margin-left: 20px;
+  }
+}
+
 /*
  * Page bottom
  */

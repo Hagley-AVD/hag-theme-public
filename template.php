@@ -168,7 +168,7 @@ function hag_theme_form_islandora_solr_simple_search_form_alter(&$form, &$form_s
     '#weight' => 8,
     '#markup' => drupal_render($tree),
   );
-  
+
   $menu_name = variable_get('menu_front-collection-links_links_source', 'menu-front-collection-links');
   $tree = menu_tree($menu_name);
   $form['simple']['hag_theme_collection_main_menu'] = array(

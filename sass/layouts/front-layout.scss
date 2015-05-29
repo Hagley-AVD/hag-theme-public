@@ -82,7 +82,6 @@
   #islandora-header-search{
     #islandora-solr-simple-search-form {
       float: right;
-      padding-top: 2%;
     }
   }
   ul.menu{
@@ -109,6 +108,23 @@
 }
 
 @media (max-width: 550px) {
+  .collection-search-wrapper {
+    #islandora-collection-search-form{
+      #edit-simple{
+        div.form-item-collection-select{
+          select{
+            width: 100%;
+            margin-bottom: 10px;
+          }
+        }
+        div.form-item-islandora-simple-search-query{
+          input{
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
   .h-wrapper {
     #islandora-header-search{
       #islandora-solr-simple-search-form{

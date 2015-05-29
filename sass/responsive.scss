@@ -67,11 +67,29 @@ $zen-auto-include-item-base: false;
   @include zen-grid-container();
 }
 
+@media all and (max-width: 600px) {
+  .collection-search-wrapper {
+    #islandora-collection-search-form{
+      #edit-simple{
+        div.form-item-collection-select{
+          select{
+            width: 100%;
+          }
+        }
+        div.form-item-islandora-simple-search-query{
+          input{
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+}
+
 /**
  * Use 5 grid columns for larger screens.
  */
 @media all and (min-width: 960px) {
-
   $zen-column-count: 5;
   $zen-gutter-width:  20px;
   $nav-height:        20px;
