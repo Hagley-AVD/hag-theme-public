@@ -8,7 +8,7 @@ base theme  = zen
 stylesheets[all][] = system.menus.css
 
 ; Then we add our own stylesheets.
-stylesheets[all][] = sass-css/normalize.css
+stylesheets[all][] = sass-css/normalize_OLD.css
 stylesheets[all][] = sass-css/wireframes.css
 stylesheets[all][] = sass-css/responsive.css
 stylesheets[all][] = sass-css/pages.css

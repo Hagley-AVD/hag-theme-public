@@ -70,6 +70,9 @@ html {
   background-image: no-repeat;
   background-size: cover;
 }
+body{
+  background-size: cover !important;
+}
 nav {
   margin-left: auto;
   margin-right: auto;
@@ -677,6 +680,12 @@ ul.pager li.pager-current {
 .f-wrapper{
   .block{
     margin-bottom: 0em;
+  }
+}
+
+.islandora-audio-metadata, .islandora-book-metadata, .islandora-binary-object-metadata, .islandora-pdf-metadata, .islandora-basic-image-metadata, .islandora-large-image-metadata, .islandora-newspaper-metadata, .islandora-video-metadata{
+  li{
+    margin-left: 20px;
   }
 }
 

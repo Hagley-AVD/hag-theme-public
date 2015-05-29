@@ -108,7 +108,7 @@ function hag_theme_preprocess_html(&$variables){
     $background_obj = islandora_object_load($background_collection_pid);
     $members = islandora_basic_collection_get_member_objects($background_obj);
     // TODO: CHANGE THE > TO '>= 1'.
-    if ($members[0] > 300000) {
+    if ($members[0] >=1 ) {
       $random = array_rand($members[1]);
       $pid = $members[1][$random]['object']['value'];
       $object = islandora_object_load($members[1][$random]['object']['value']);
@@ -168,7 +168,7 @@ function hag_theme_form_islandora_solr_simple_search_form_alter(&$form, &$form_s
     '#weight' => 8,
     '#markup' => drupal_render($tree),
   );
-  
+
   $menu_name = variable_get('menu_front-collection-links_links_source', 'menu-front-collection-links');
   $tree = menu_tree($menu_name);
   $form['simple']['hag_theme_collection_main_menu'] = array(

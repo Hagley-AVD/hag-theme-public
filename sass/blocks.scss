@@ -69,7 +69,9 @@ h2.block-title {
     font-size: 85%;
   }
   .form-item.form-type-textfield.form-item-islandora-simple-search-query {
-    width: 100%;
+    width: 98%;
+    display: inline-block;
+    margin-bottom: .5em !important;
   }
   .adv_search {
     padding-right: 10px;
