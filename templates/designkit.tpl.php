@@ -8,28 +8,36 @@
  * .designkit-bg { background-color: [?php print $background ?]; }
  */
 
-body.designkit {
-      background: <?php print $background ?>;
-    }
+body {
+  background: <?php print $body ?>;
+}
 
 #header {
-      background: <?php print $header ?>;	
+      background: <?php print $header ?>;
 }
 
-#main {
-      background: <?php print $content ?>;	
+#content {
+      background: <?php print $content ?>;
 }
 
-#navigation {
-      background: <?php print $navigation ?>;	
+.breadcrumb {
+      background: <?php print $breadcrumb ?>;
 }
 
 #footer {
-      background: <?php print $footer ?>;	
+      background-color: <?php print hag_theme_hex2rgba($footer, .5) ?>;
+}
+
+#bottom {
+      background-color: <?php print hag_theme_hex2rgba($bottom, .8) ?>;
 }
 
 .sidebar {
-      background: <?php print $sidebars?>;	
+      background: <?php print $sidebars?>;
+}
+
+.front .islandora-simple-search{
+  background-color: <?php print hag_theme_hex2rgba($frontsearch, .5) ?>;
 }
 
 #page-title {

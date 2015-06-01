@@ -100,24 +100,26 @@
  *   please visit the Theme Developer's Guide on Drupal.org:
  *   http://drupal.org/node/223440 and http://drupal.org/node/1089656
  */
-
 function hag_theme_preprocess_html(&$variables){
   if ($variables['is_front']) {
     module_load_include('module', 'islandora_basic_collection', 'islandora_basic_collection');
     $background_collection_pid = (theme_get_setting('hag_background_collection_pid') ? theme_get_setting('hag_background_collection_pid') : "islandora:root");
-    $background_obj = islandora_object_load($background_collection_pid);
-    $members = islandora_basic_collection_get_member_objects($background_obj);
-    // TODO: CHANGE THE > TO '>= 1'.
-    if ($members[0] >= 1) {
-      $random = array_rand($members[1]);
-      $pid = $members[1][$random]['object']['value'];
-      $object = islandora_object_load($members[1][$random]['object']['value']);
+
+    $qp = new IslandoraSolrQueryProcessor();
+    $qp->buildQuery('*:*');
+    // Limit to the object in "that:thing" collection...
+    $qp->solrParams['fq'][] = 'RELS_EXT_isMemberOfCollection_uri_mt:"info:fedora/"' . $background_collection_pid;
+    // ... that have the "MODS" datastream.
+    $qp->solrParams['fq'][] = 'fedora_datastreams_ms:' . (theme_get_setting('hag_background_dsid') ? theme_get_setting('hag_background_dsid') : "TN");
+    $qp->executeQuery();
+    $response = $qp->islandoraSolrResult['response']['objects'];
+    if (count($response) >= 1) {
+      $random = array_rand($response, 1);
+      $pid = $response[$random]['PID'];
+      $object = islandora_object_load($random['PID']);
       $dsid = (theme_get_setting('hag_background_dsid') ? theme_get_setting('hag_background_dsid') : "TN");
-      if (isset($object[$dsid])) {
-        $variables['background_image'] = "/islandora/object/$pid/datastream/$dsid/view";
-      }
+      $variables['background_image'] = "/islandora/object/$pid/datastream/$dsid/view";
     } else {
-      // Set the background to something safe in this case.
       $path = drupal_get_path('theme', 'hag_theme');
       $image_path = $path . '/images/bg_lightwoodfloor.jpg';
       $variables['background_image'] = $image_path;
@@ -144,6 +146,44 @@ function hag_theme_preprocess_page(&$variables) {
       drupal_set_title("Search Results");
     }
   }
+}
+
+function hag_theme_hex2rgba($color, $opacity = false) {
+
+	$default = 'rgb(0,0,0)';
+
+	//Return default if no color provided
+	if(empty($color))
+          return $default;
+
+	//Sanitize $color if "#" is provided
+        if ($color[0] == '#' ) {
+        	$color = substr( $color, 1 );
+        }
+
+        //Check if color has 6 or 3 characters and get values
+        if (strlen($color) == 6) {
+                $hex = array( $color[0] . $color[1], $color[2] . $color[3], $color[4] . $color[5] );
+        } elseif ( strlen( $color ) == 3 ) {
+                $hex = array( $color[0] . $color[0], $color[1] . $color[1], $color[2] . $color[2] );
+        } else {
+                return $default;
+        }
+
+        //Convert hexadec to rgb
+        $rgb =  array_map('hexdec', $hex);
+
+        //Check if opacity is set(rgba or rgb)
+        if($opacity){
+        	if(abs($opacity) > 1)
+        		$opacity = 1.0;
+        	$output = 'rgba('.implode(",",$rgb).','.$opacity.')';
+        } else {
+        	$output = 'rgb('.implode(",",$rgb).')';
+        }
+
+        //Return rgb(a) color string
+        return $output;
 }
 
 /**

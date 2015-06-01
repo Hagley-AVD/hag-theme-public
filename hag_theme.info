@@ -96,10 +96,15 @@ settings[zen_wireframes]           = 0
 
 ; Set custom theme colours using DesignKit
 
+; Body Background color
+designkit[color][body][title] = "Body Background"
+designkit[color][body][description] = "Body Background color."
+designkit[color][body][default] = "#ffffff"
+
 ; Background color
-designkit[color][background][title] = "Background"
-designkit[color][background][description] = "Background color."
-designkit[color][background][default] = "#ffffff"
+designkit[color][page][title] = "Page Background"
+designkit[color][page][description] = "Page Background color."
+designkit[color][page][default] = "#ffffff"
 
 ; Header color
 designkit[color][header][title] = "Header color"
@@ -111,19 +116,24 @@ designkit[color][content][title] = "Content color"
 designkit[color][content][description] = "Content color."
 designkit[color][content][default] = "#ffffff"
 
-; Navigation Bar color
-designkit[color][navigation][title] = "Navigation Bar color"
-designkit[color][navigation][description] = "Navigation Bar color."
-designkit[color][navigation][default] = "#ffffff"
+; Breadcrumb Bar color
+designkit[color][breadcrumb][title] = "Breadcrumb Bar color"
+designkit[color][breadcrumb][description] = "Breadcrumb Bar color."
+designkit[color][breadcrumb][default] = "#ffffff"
+
+; Front Search color
+designkit[color][frontsearch][title] = "Frontpage Searchbox color"
+designkit[color][frontsearch][description] = "Frontpage Searchbox color."
+designkit[color][frontsearch][default] = "#ffffff"
 
 ; Footer color
 designkit[color][footer][title] = "Footer color"
 designkit[color][footer][description] = "Footer color."
 designkit[color][footer][default] = "#ffffff"
 
-; Page Bottom Color
-designkit[color][bottom][title] = "Page Bottom color"
-designkit[color][bottom][description] = "Page Bottom color."
+; Bottom color
+designkit[color][bottom][title] = "Bottom color"
+designkit[color][bottom][description] = "Bottom color."
 designkit[color][bottom][default] = "#ffffff"
 
 ; Sidebars color

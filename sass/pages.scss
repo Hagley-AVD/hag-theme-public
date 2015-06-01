@@ -345,8 +345,13 @@ dl.solr-thumb {
       text-align: center;
     }
   }
+  #page-title{
+    display: none;
+  }
+  #first-time{
+    display: none;
+  }
 }
-
 
 .footer-popular-links, #block-system-main-menu, .adv_search{
   ul.menu{
@@ -664,14 +669,6 @@ ul.pager li.pager-current {
 /*
  * Footer
  */
-
-#footer, #header {
-  background-color: rgba(088, 083, 083, .5) !important;
-}
-
-#bottom{
-  background-color: rgba(054, 054, 054, .8) !important;
-}
 
 .f-wrapper, #block-menu-menu-footer-menu{
   margin-left: auto;
