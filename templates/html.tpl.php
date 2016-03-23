@@ -40,7 +40,14 @@
     <![endif]-->
   <?php endif; ?>
 </head>
+
+<?php if (isset($background_image)):?>
 <body class="<?php print $classes; ?>" <?php print $attributes;?> style="background-image: url('<?php print $background_image; ?>')">
+<?php else :?>
+<body class="<?php print $classes; ?>" <?php print $attributes;?>>
+<?php endif;?>
+
+
   <?php if ($skip_link_text && $skip_link_anchor): ?>
     <p id="skip-link">
       <a href="#<?php print $skip_link_anchor; ?>" class="element-invisible element-focusable"><?php print $skip_link_text; ?></a>
