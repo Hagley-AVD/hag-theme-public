@@ -115,7 +115,7 @@
       </nav>
     <?php endif; ?>
     </div>
-    <?php if ($islandora_header_search): ?>
+    <?php if (isset($islandora_header_search)): ?>
       <div id="islandora-header-search"><?php print $islandora_header_search; ?></div>
     <?php endif; ?>
     
