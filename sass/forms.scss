@@ -89,13 +89,13 @@ a.button { /* Buttons used by contrib modules like Media */
   min-height: 45px;
   margin-bottom: 10px;
   verticle-align: middle;
-  #islandora-collection-search-form{
+  #islandora-collection-search-form {
     margin: 10px;
     padding-top: 8px;
-    #edit-submit{
+    #edit-submit, .form-submit{
       display: none;
     }
-    #edit-simple{
+    #edit-simple, .form-wrapper{
       div.form-item-collection-select{
         select{
           width: 50%;

@@ -146,6 +146,9 @@ function ir7_preprocess_islandora_basic_collection_grid(&$variables) {
 
 /**
  * Implements hook_preprocess().
+ *
+ * Preprocess for legacy SPARQL collection views.
+ *
  */
 function ir7_preprocess_islandora_basic_collection_wrapper(&$variables) {
   $obj = $variables['islandora_object'];
@@ -154,7 +157,41 @@ function ir7_preprocess_islandora_basic_collection_wrapper(&$variables) {
     $variables['islandora_collection_search_block'] = render($block['content']);
   }
   if ($variables['islandora_object']['MEDIUM']){
-    $pid = $variables['islandora_object']->{id};
+    $pid = $variables['islandora_object']->id;
+    $source = "<div><img src='/islandora/object/$pid/datastream/MEDIUM/view'/></div>";
+    $form['collection_image'] = array(
+      '#type' => 'item',
+      '#markup' => "$source",
+    );
+    $variables['collection_image'] = drupal_render($form);
+  }
+  $models = $obj->{'models'};
+  if (in_array("islandora:collectionCModel", $models)) {
+    $block = module_invoke('dgi_ondemand', 'block_view', 'dgi_ondemand_latest_obj');
+    $data = render($block['content']);
+    if (!empty($data)) {
+      $variables['islandora_latest_objects'] = $data;
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess().
+ *
+ * Preprocess for solr driven collection views.
+ *
+ */
+function ir7_preprocess_islandora_objects_subset(&$variables) {
+  if (module_exists('islandora_collection_search')) {
+    $block = module_invoke('islandora_collection_search', 'block_view', 'islandora_collection_search');
+    $variables['islandora_collection_search_block'] = render($block['content']);
+  }
+  $obj = menu_get_object('islandora_object', 2);
+  $dc = $obj['DC']->content;
+  $dc_object = DublinCore::importFromXMLString($dc);
+  $variables['dc_array'] = isset($dc_object) ? $dc_object->asArray() : array();
+  if ($obj['MEDIUM']) {
+    $pid = $obj->id;
     $source = "<div><img src='/islandora/object/$pid/datastream/MEDIUM/view'/></div>";
     $form['collection_image'] = array(
       '#type' => 'item',

@@ -49,7 +49,7 @@ html {
   font-size: 85%;
 }
 
-.islandora-basic-collection-wrapper img {
+.collection-image-wrapper img {
   max-height: 30em;
   width: 100%;
 }
@@ -183,10 +183,10 @@ p.flex-caption {
 }
 
 .slides li {
-  display: inline-block!important; 
+  display: inline-block!important;
   float: none!important;
 }
-    
+
 .collection_folder {
   background-image: url("../images/folder.png");
   background-repeat: no-repeat;
@@ -218,7 +218,18 @@ p.flex-caption {
   }
 }
 
+.islandora-object-thumb{
+  text-align: center;
+  img{
+    max-width: 10em;
+  }
+}
+
 .islandora-basic-collection-caption{
+  text-align: center;
+}
+
+.islandora-object-caption{
   text-align: center;
 }
 
@@ -496,7 +507,7 @@ div.accordion_button.previous {
 }
 
 .front #content {
-  padding: 0; 
+  padding: 0;
   background: none;
   box-shadow: none;
 }
@@ -519,7 +530,7 @@ div.accordion_button.previous {
     list-style-type: none;
     margin: 5px 0;
     padding: 2px 5px 4px;
-    
+
     a:hover {
       color: #888;
     }
