@@ -2,7 +2,7 @@
 
 /**
  * @file
- * islandora-basic-collection-wrapper.tpl.php
+ * islandora-objects-subset.tpl.php
  *
  * @TODO: needs documentation about file and variables
  */
@@ -34,9 +34,6 @@
   </div>
   <?php if (isset($islandora_collection_search_block)): ?>
     <div class="collection-search-wrapper"><?php print $islandora_collection_search_block; ?></div>
-  <?php endif; ?>
-  <?php if (isset($islandora_object['OBJ'])): ?>
-    <div class="islandora-objects-image-obj-wrapper"><img src="/islandora/object/<?php print $islandora_object->id; ?>/datastream/OBJ/view"></img></div>
   <?php endif; ?>
     <span class="islandora-objects-display-switch">
       <?php
