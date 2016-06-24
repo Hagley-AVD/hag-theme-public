@@ -28,7 +28,8 @@ function ir7_preprocess_html(&$variables){
       $variables['background_image'] = "/islandora/object/$pid/datastream/$dsid/view";
     } else {
       $path = drupal_get_path('theme', 'ir7');
-      $image_path = $path . '/images/bg_lightwoodfloor.jpg';
+      //$image_path = $path . '//images/view.jpg';
+      $image_path = '/sites/all/themes/ir7/images/view.jpg';
       $variables['background_image'] = $image_path;
     }
   }
@@ -110,7 +111,7 @@ function ir7_form_islandora_solr_simple_search_form_alter(&$form, &$form_state, 
     '#markup' => l(t("Advanced Search"), "advanced-search", array('attributes' => array('class' => array('adv_search')))),
   );
   $form['simple']['advanced_link'] = $link;
-  $form['simple']['islandora_simple_search_query']['#attributes']['placeholder'] = t("Search Repository");
+  $form['simple']['islandora_simple_search_query']['#attributes']['placeholder'] = t("Search Digital Collections");
   if (theme_get_setting('hag_theme_search_text')) {
     $form['simple']['hag_theme_text_search_text'] = array(
       '#weight' => -1,

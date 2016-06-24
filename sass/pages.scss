@@ -10,6 +10,62 @@
 @import "base";
 @import "_variables";
 
+a#clip {display:none;}
+
+/*BG-images*/
+body.front {background-attachment: fixed !important;
+}
+body.page-islandora-object{
+  background: url('/sites/default/files/pictures/home_background2.jpg');
+  background-size: cover;
+}
+body.page-islandora-search{
+  background: url('/sites/default/files/pictures/Generic_Background.jpg') no-repeat;
+  background-size: cover;
+}
+body.page-node{
+  background: url('/sites/default/files/pictures/new_background.jpg') no-repeat;
+  background-size: cover;
+}
+
+/*font fix from normalize/more cheating*/
+button, input, select, textarea {
+    font-size: 100%;
+    margin: 0;
+    vertical-align: baseline;
+}
+
+/*coll_search_hide option*/
+option[value="all"] {
+    display: none;
+}
+
+/* fixed-header chaos */
+header#header {
+    top: 0;
+}
+nav {
+    margin-top: 7.6%;
+}
+
+/*hiding list option*/
+.islandora-objects-display-switch {
+    display: none;
+}
+
+/*body links*/
+a:link {color:$active;
+text-decoration: none;}
+a:hover{color:$hover}
+a:active{color:$active}
+a:visited{color:$active}
+
+article.node{
+ font-size: 1.2em;
+ line-height: normal;
+ a {text-decoration: underline;}
+}
+
 .region-header {
 }
 
@@ -18,11 +74,31 @@
  */
 .mean-bar {
   margin-top: 0px;
+  box-shadow:0 4px 6px -2px #7c7c7c;
 }
 
 .mean-container .mean-bar {
-  z-index: auto !important;
+  z-index: 5;
+  top:0;
+  position: fixed;
+  background: #fff;
+  color: #000 !important;
 }
+a.meanmenu-reveal{
+ color:#000 !important;
+}
+.mean-container a.meanmenu-reveal span {
+ background: #0d1013;
+}
+.mean-container{ 
+  .mean-nav{ 
+  background: #fff;
+   ul li a {
+ color: #0d1013;
+ border-top: 1px solid #0d1013;
+  }
+ }
+} 
 
 .social-share-outer {
   padding-bottom: 2em;
@@ -33,10 +109,10 @@
 }
 
 html {
-    font-family: 'Open Sans',helvetica,airal,sans-serif;
+    font-family:'Lato',arial,sans-serif; 
 }
 #page {
-    background: #FFFFFF;
+   /* background: #FFFFFF;*/
 }
 #block-menu-menu-header-menu {
     float: left;
@@ -51,7 +127,8 @@ html {
 
 .collection-image-wrapper img {
   max-height: 30em;
-  width: 100%;
+  max-width: 100%;
+  width: auto;
 }
 
 #content {
@@ -66,13 +143,17 @@ html {
     padding: 0 0 0 0;
 }
 
-.body-wrapper{
+.body-wrapper{/*
   background-image: no-repeat;
-  background-size: cover;
+  background-size: cover;*/
 }
 
 body{
-  background-size: cover !important;
+  background-size: 120% auto !important;
+  color: #333333;
+  font-size: 85%;
+  line-height: 1.5em;
+  margin: 0; 
 }
 
 nav {
@@ -110,7 +191,8 @@ nav {
 #page-title {
   background: none !important;
   font-weight: normal;
-  color:$gold !important;
+  color:$fakeblack !important;
+  padding-bottom: 5px;
 }
 
 .region.region-highlighted {
@@ -214,14 +296,18 @@ p.flex-caption {
 .islandora-basic-collection-thumb{
   text-align: center;
   img{
-    max-width: 10em;
+    width: 100%;
+    max-height: 200px;
+    max-width:200px;
   }
 }
 
 .islandora-object-thumb{
   text-align: center;
   img{
-    max-width: 10em;
+    border-radius: 5px;
+    max-width: 200px;
+    max-height: 200px;
   }
 }
 
@@ -287,6 +373,14 @@ div.widgets-element-horizontal {
   border-top: 1px solid #EEF0ED;
   word-wrap: break-word;
 }
+.solr-fields dt{
+padding-left: 15px;
+}
+.islandora-inline-metadata dd {/*padding-left:2px;*/
+}
+.islandora-inline-metadata dd p{
+margin: 1.5em 0;
+}
 dl.solr-fields {
   border-top: none;
   float: right;
@@ -300,6 +394,14 @@ dl.solr-thumb {
 }
 
 .front{
+ .f-wrapper #block-menu-menu-popular-links{
+/* margin-left: 20% !important;
+ margin-right: -50% !important;*/
+}
+ .f-wrapper .footer-logo{
+   margin-left: 0 !important;
+    margin-right:-60% !important;
+ }
   #navigation{
     padding-bottom: 0px;
     padding-top: 0px;
@@ -309,7 +411,8 @@ dl.solr-thumb {
   }
   #page{
     background-color: transparent;
-    padding-top: 100px;
+    padding-top: 0px;
+    max-width: 90%
   }
   .islandora-simple-search{
     background-color: rgba(255, 255, 255, 0.5);
@@ -321,8 +424,10 @@ dl.solr-thumb {
     /*transform: translateY(35%);*/
     h2{
       text-align: center;
-      color: white;
-      font-size: 250%;
+      color: black;
+      font-size: 300%;
+      line-height: normal;
+      font-family: "Ropa Sans" !important;
     }
     ul.menu{
       text-align: center;
@@ -331,16 +436,16 @@ dl.solr-thumb {
       padding: 0;
       margin: 0;
       list-style-type: none;
+      font-size: 1.35em;
     a {
       float: left;
       text-decoration: none;
-      color: white;
       padding: 0.2em 0.6em;
       border-right: 1px solid white;
     }
     a:hover{
       background-color: transparent;
-      color: grey;
+      color: $bluefix;
     }
     li {
       display: inline-block;
@@ -357,11 +462,19 @@ dl.solr-thumb {
     }
   }
   #page-title{
-    display: none;
+    display: block;
+    padding-left: 5px;
+    padding-top: 0.25em;
   }
   #first-time{
     display: none;
   }
+  .region-highlighted{
+    max-width: 100%;
+  }
+  #main{
+    max-width:100%;
+ }
 }
 
 .footer-popular-links, #block-system-main-menu, .adv_search{
@@ -372,15 +485,14 @@ dl.solr-thumb {
       list-style-type: none;
     a {
       text-decoration: none;
-      color: white;
       padding: 0em 0.6em;
     }
     a:hover{
       background-color: transparent;
-      color: grey;
+      color: black;
     }
     li {
-      display: block;
+      padding-bottom:2px;
     }
     li:hover{
       background-color: transparent;
@@ -392,31 +504,59 @@ dl.solr-thumb {
   a {
     text-decoration: none;
     color: white;
-    padding: 0em 0.6em;
   }
   a:hover{
     background-color: transparent;
-    color: grey;
+    color: white;
+    text-decoration:underline;
   }
 }
 
 /*
  * Header
  */
+#header {
+box-shadow: 0 4px 6px -2px #7c7c7c;
+    min-height: 40px;
+    overflow: hidden;
+    position: fixed;
+    text-decoration:underline;
+    width: 100%;
+    z-index: 1;
+}
+
 .h-wrapper {
   margin-left: auto;
   margin-right: auto;
   max-width: 1600px;
+  padding-top: 5px;
 }
-hgroup, #islandora-header-search{
- // padding-top: 4%;
+div.form-item-islandora-simple-search-query {
+    margin-bottom: 4px;
+    margin-top: 4px;
 }
 
 #logo{
-  text-align: center;
+background: #fff none repeat scroll 0 0;
+    box-shadow: -4px 4px 6px -2px #7c7c7c;
+    float: left;
+    height: 98px;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    position: fixed;
+    text-align: center;
+    top: 0;
+    transition: height 0.6s ease 0s;
+    width: 153px !important;
+    z-index: 100;
   img{
-    max-height: 5em;
-    padding-right: 0.5em;
+    height: auto;
+    max-height: unset !important;
+    max-width: 100% !important;
+    padding-right: 0;
+    padding-top: 4px;
+    z-index: 100;
   }
 }
 /*Accordion Rotator */
@@ -433,9 +573,6 @@ div.accordion_button.previous {
 }
 
 #logo { /* Wrapping link for logo */
-  float: left; /* LTR */
-  margin: 0;
-  padding: 0;
 
 }
 
@@ -470,17 +607,17 @@ div.accordion_button.previous {
 }
 
 .region-header { /* Wrapper for any blocks placed in the header region */
-  margin-left: 53px;
-  margin-top: 40px;
-  position: absolute;
-  width: 400px;
+  margin-left: 0px;
+  margin-top: 0px;
+  position: relative;
+  width: 81%;
 }
 
-.front{
-  #name-and-slogan, #logo, #site-name{
-    display: none;
-  }
-}
+/* .front{
+*  #name-and-slogan, #logo, #site-name{
+*    display: none;
+*  }
+*} */
 
 /*
  * Main (container for everything else)
@@ -507,16 +644,17 @@ div.accordion_button.previous {
 }
 
 .front #content {
-  padding: 0;
-  background: none;
-  box-shadow: none;
+    background: #fafafa none repeat scroll 0 0 !important;
+    border-radius: 5px;
+    max-width: 100%;
+    display: block;
 }
 
 .region-highlighted {
 }
 
 .breadcrumb { /* The path to the current page in the form of a list of links */
-  font-size: 70%;
+  font-size: 80%;
   letter-spacing: 0.6pt;
   line-height: 1.5em;
   padding-left: 9px;
@@ -626,15 +764,18 @@ span.field-label { /* The inline field label used by the Fences module */
 
 .item-list .pager { /* A list of page numbers when more than 1 page of content is available */
   padding: 0;
+  font-size: 1rem;
 
   li { /* Each page number in the pager list */
-    padding: 0 0.5em;
+    padding: 0.5em;
+    margin: 0;
   }
 }
 
 ul.pager li.pager-current {
-  background: none repeat scroll 0 0 #CCCECF;
-  border: 1px solid #419845;
+  font-size:1.2rem;
+ /* background: none repeat scroll 0 0 #CCCECF;
+  border: 1px solid #419845;*/
   //color: #5A5B5D;
 }
 
@@ -664,7 +805,15 @@ ul.pager li.pager-current {
  * Remember to NOT add padding or margin to your .region-sidebar-first
  * (see the layout.css file.)
  */
-
+.region-sidebar-first{ /*override responsive*/
+width: 23% !important;
+padding-top: 10px; /*sorry theme instructions*/
+border: 1px solid #d9d9d9;
+}
+.sidebar-first #content { /*override responsive*/
+    margin-left: 23%;
+    width: 77%;
+}
 
 /*
  * Second sidebar (on right in LTR languages, on left in RTL)
@@ -681,10 +830,17 @@ ul.pager li.pager-current {
  * Footer
  */
 
+#footer{
+  background-color: rgba(88, 83, 83, 0.80) !important;
+  bottom: 0;
+}
+
 .f-wrapper, #block-menu-menu-footer-menu{
   margin-left: auto;
   margin-right: auto;
   max-width: 1600px;
+  margin-top: 4em;
+  margin-bottom: 4em;
 }
 
 .f-wrapper{
@@ -697,6 +853,9 @@ ul.pager li.pager-current {
   li{
     margin-left: 20px;
   }
+  a:link{
+   text-decoration:underline;
+  }
 }
 
 /*
@@ -706,3 +865,91 @@ ul.pager li.pager-current {
 .region-bottom { /* Wrapper for any blocks placed in the page bottom region */
 }
 
+/*More CM Object-level styles*/
+.islandora-large-image-content{
+ width: 100% !important;
+}
+
+input#copylink { /*what is this? a form field for ants!?*/
+z-index:-100;
+position:absolute;
+}
+
+/*Temp space for media queries*/
+@media only screen and (max-width: 1135px){
+#logo img{display:none}
+#logo {
+   background: url('/sites/default/files/pictures/hagley_logo_horiz.png')no-repeat;
+   height: 48px;
+   width: 155px !important;
+   position: fixed;
+   margin-top: 7px;
+   margin-left: 5px;
+   box-shadow: 0px 4px 0px -4px #7c7c7c;
+ }
+#header{
+ box-shadow:none;
+ z-index: 100;
+ }
+#block-views-tumblr-view-block{
+ max-width:40% !important;
+}
+#islandora-header-search{display:none;}
+
+header#header{
+  width: 165px;
+  max-width: 165px;
+  height: 48px;
+}
+}
+@media only screen and (max-width: 900px){
+.footer-description p{margin:0 !important;}
+}
+@media (min-width:1135px){
+#block-system-main-menu ul.menu {
+    .last.leaf{
+      display: none;
+  }
+ }
+}
+@media (max-width: 835px){
+.tumblrFront-block{
+  float:none !important; max-width: none !important; margin-left: 10%;
+ }
+}
+.islandora-objects-grid {text-align:center;}
+@media (min-width:550px) and (max-width:960px){
+.page-islandora-object .region-sidebar-first{
+ display:none;
+}
+.page-islandora-object #content{
+width:100%;
+.islandora-objects-grid{
+ width:100% !important;
+ }
+}
+.page-islandora-search .region-sidebar-first{
+display:block;
+width:23%;
+padding-right: 0;
+}
+.page-islandora-search #content{
+float:right;
+width:77%;
+margin-left:0;
+}
+}
+@media (max-width: 550px){
+  .region-sidebar-first{
+    display: none;
+  }
+ .sidebar-first #content{
+    width: 100%;
+    margin: 0;
+  }
+.front{
+ .f-wrapper #block-menu-menu-popular-links{
+  width: 100% !important;
+    }
+  }  
+}
